@@ -1,0 +1,88 @@
+#1) Qual será o valor da variável SOMA ao final do processamento?
+
+int INDICE = 13, SOMA = 0, K = 0;
+while (K < INDICE) {
+    K = K + 1;
+    SOMA = SOMA + K;
+}
+printf("%d", SOMA);
+
+
+Resultado: O valor de SOMA será 91.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#2) Programa para verificar se um número pertence à sequência de Fibonacci
+
+def is_fibonacci(n):
+    a, b = 0, 1
+    while b < n:
+        a, b = b, a + b
+    return b == n or a == n
+
+# Exemplo de uso
+numero = int(input("Informe o número: "))
+if is_fibonacci(numero):
+    print(f"{numero} pertence à sequência de Fibonacci.")
+else:
+    print(f"{numero} não pertence à sequência de Fibonacci.")
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#3) Programa para calcular o faturamento diário de uma distribuidora
+
+import json
+
+# Exemplo de dados de faturamento em JSON
+faturamento_json = '''
+{
+    "faturamento": [220.50, 300.00, 0, 150.75, 250.00, 500.00, 0, 350.00, 120.00, 80.00]
+}
+'''
+
+# Carregar dados JSON
+dados = json.loads(faturamento_json)
+faturamento = [x for x in dados['faturamento'] if x > 0]  # Ignorar dias sem faturamento
+
+# Cálculos
+menor_faturamento = min(faturamento)
+maior_faturamento = max(faturamento)
+media_faturamento = sum(faturamento) / len(faturamento)
+dias_acima_media = sum(1 for x in faturamento if x > media_faturamento)
+
+# Resultados
+print(f"Menor faturamento: R${menor_faturamento:.2f}")
+print(f"Maior faturamento: R${maior_faturamento:.2f}")
+print(f"Dias acima da média: {dias_acima_media}")
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#4) Programa para calcular o percentual de faturamento por estado
+
+faturamento_estados = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+}
+
+total = sum(faturamento_estados.values())
+
+for estado, faturamento in faturamento_estados.items():
+    percentual = (faturamento / total) * 100
+    print(f"{estado}: {percentual:.2f}%")
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#5) Programa para inverter os caracteres de uma string
+
+def inverte_string(s):
+    invertida = ''
+    for i in range(len(s)-1, -1, -1):
+        invertida += s[i]
+    return invertida
+
+# Exemplo de uso
+string = input("Informe a string: ")
+print(f"String invertida: {inverte_string(string)}")
